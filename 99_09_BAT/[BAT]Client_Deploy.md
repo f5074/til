@@ -1,3 +1,9 @@
+### 1. 상대경로 사용
+copy ..\bin\Release\lib\*.dll
+rename *.dll *.deploy
+
+
+### 2. 절대경로 사용
 @echo off
 setlocal
 :: set location
@@ -29,7 +35,6 @@ copy %dll_dir%\*.dll %deploy_client_dir%
 
 :: rename
 rename %deploy_client_dir%\*.dll *.deploy
-
 
 ### 년월일 시분초 세팅
 set year=%date:~0,4%
