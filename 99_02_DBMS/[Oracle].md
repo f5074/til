@@ -49,8 +49,22 @@ FROM (
 3. 설비에서 측정하는 항목별(ITEM_CD)로 날짜별로 데이터를 생성해야함
 4. 데이터가 없는 빈값의 경우 이전 혹은 이후에 있는 데이터로 값을 덮어씌워야 함
    
+## DBLINK
+
+JOIN 자체를 외부 DB에서 수행하려면, /*+ DRIVING_SITE(EXT_TABLE) */ 을 사용한다.
+
+-> 보통 외부 DB의 TABLE이 큰 경우, 작은 내부 DB DATA 를 그쪽으로 보낸후 JOIN 이후의 결과를 받는 방식
+
+LEADING 등의 힌트가 안 먹을때는? 그냥 테이블, 뷰 순서 바꾸고 ORDERED 힌트 적용하면 먹힘
+
+-> Query Transformation 등으로 인해 Query Block 이 바뀔수 있어 명시적으로 이름을 지정하는 LEADING 힌트가 안먹을 때가
+
+있는 것 같다. 10053 Trace 확인하면 정확한 BLOCK 명이 나오려나?
+
 
 
 
 ## Reference
 https://m.cafe.daum.net/oraclesqltuning/8ACn/28
+https://lawmin.tistory.com/58
+
