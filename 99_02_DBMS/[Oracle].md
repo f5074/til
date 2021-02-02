@@ -41,6 +41,26 @@ FROM (
  WHERE TO_CHAR(DUM_DAYS, 'D') = '7'
 
 
+## X일 단위 활용
+
+WITH TB_DATE AS (
+	SELECT TO_CHAR(DUM_DAYS, 'YYYYMMDD') DUM_DAYS
+	FROM (
+	    SELECT TO_DATE('20200101', 'YYYYMMDD') - 1 + ROWNUM AS DUM_DAYS
+	    FROM ALL_OBJECTS
+	    WHERE TO_DATE('20200101', 'YYYYMMDD') - 1 + ROWNUM <= TO_DATE('20200120', 'YYYYMMDD')
+	    )
+), TB_CODE AS(
+		SELECT GENE_CD_DESC
+		FROM T_CD_GENE_DATA
+		WHERE 1 = 1
+		  AND GENE_DV = 'STAT_EQP_SET'
+)
+SELECT TD.DUM_DAYS, TC.GENE_CD_DESC
+  FROM TB_DATE TD, TB_CODE TC
+ORDER BY DUM_DAYS  
+
+
 ## 설비데이터
 설비데이터를 차트로 만들때, 각 분단위로 데이터가 쌓이는 상황
 상황에 따라 분단위 데이터가 중간에 빠질 때 빈값이 없도록 등록하는 방법
