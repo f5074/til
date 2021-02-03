@@ -82,6 +82,30 @@ LEADING 등의 힌트가 안 먹을때는? 그냥 테이블, 뷰 순서 바꾸�
 있는 것 같다. 10053 Trace 확인하면 정확한 BLOCK 명이 나오려나?
 
 
+## Dump파일 Import
+1. 먼저 emt.dmp파일을 C:\DEV에 저장
+2. cmd에서 순서대로 입력을 하면 됨
+
+1) C:\Users\hkedu>sqlplus "/as sysdba"
+2) SQL> create user emt identified by emt default tablespace users;
+3) SQL> grant connect, resource to emt;
+4) SQL> create directory save as 'c:/dev';
+5) SQL> grant read, write on directory save to emt;
+6) SQL> exit
+7) C:\Users\hkedu>impdp emt/emt directory=save file=emt.dmp
+
+
+오류가 생길 경우
+
+1) C:\Users\hkedu>sqlplus "/as sysdba"
+2) SQL> drop user emt cascade;
+3) SQL> drop directory save;
+4) SQL> create user emt identified by emt default tablespace users;
+5) SQL> grant connect, resource to emt;
+6) SQL> create directory save as 'c:/dev';
+7) SQL> grant read, write on directory save to emt;
+8) SQL> exit
+9) C:\Users\hkedu>impdp emt/emt directory=save file=emt.dmp
 
 
 ## Reference

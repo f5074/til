@@ -143,21 +143,106 @@ Refactor Rename
 
 README.md
 
+interfaces
+WelcomeController
+
+* devTools가 알아서 재시작함
+
+* test를 활용해야하는 이유
+
 
 #### 5. Test Driven Development
+- 테스트 주도 개발  = 목표 주도 개발 = 사용자 중심 개발 = 인터페이스 중심 개발
+(목표를 달성했는지 테스트)
+
+* TDD의 목표 
+1. 올바르게 작동하는 깔끔한 코드를 만드는게 목표
+
+Refactoring
+Test Code 작성
+Test First
+
+TDD의 과정
+Red (실패하는 코드)
+Green (Add 가능하도록)
+Refactoring (x + y 등을 구현해서 실행하도록)
+
+실행하는게 오래걸릴때 TDD를 활용
+
+
+* Demo
+
+Restaurant
+
+Go TO > Test
+
+*Tip ctrl + shift 로 매서드 위치 변경 
+
+
+
 
 #### 6. REST API
 
+다양한 환경 지원
+
+서로다른 Front-end
+하나의 Back-end
+
+Create
+Read
+Update
+Delete
+
+POST
+GET
+PUT/PATCH
+DELETE
+
+URI 
+URL (Uniform Resource Locator)
+
+
+* Collection 역할
+Read(List), Create
+
+ex http://host/restaurants/
+
+* Member 역할
+Read(Detail), Update, Delete
+
+
+ex http://host/restaurants/{id}
 
 
 
+* JSON 
+
+* APIs
+가게목록
+GET /restaurants
+GET /restaurants/1
+GET /restaurants/{id}
+
+가게추가
+POST /restaurants
+
+가게수정
+PATCH /restaurants/{id}
+
+가게 삭제
+DELETE /restaurants/{id}
 
 
+#### 7. 가게목록
+실제 구현
+
+#### 8. 가게상세 -1
 
 
+#### 9. 가게상세 -2
 
 
-
+#### 10. 의존성 주입
 
 
 

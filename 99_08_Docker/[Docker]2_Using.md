@@ -17,8 +17,8 @@ password: password
 Role SYSDBA
 
 CREATE USER drawing IDENTIFIED BY drawing
-ALTER USER drawing IDENTIFIED BY test
- grant connect, resource to drawing 
+--ALTER USER drawing IDENTIFIED BY test
+grant connect, resource to drawing 
 
 GRANT CREATE SESSION TO drawing
 GRANT CREATE ANY TABLE TO drawing
