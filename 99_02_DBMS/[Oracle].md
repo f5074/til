@@ -107,6 +107,11 @@ LEADING 등의 힌트가 안 먹을때는? 그냥 테이블, 뷰 순서 바꾸�
 8) SQL> exit
 9) C:\Users\hkedu>impdp emt/emt directory=save file=emt.dmp
 
+## ORDER BY
+GROUP BY SITE, CUR_DT, EQP_DESC, EQP_NO, EQP_ID, STATUS, STATUS_D
+ORDER BY SITE, CUR_DT, EQP_DESC ASC, EQP_NO, EQP_ID, STATUS, DECODE(STATUS_D, 'ChangePowder', 1, 'ChangeMold', 2, 'SampleProduction', 3)
+
+
 
 ## Reference
 https://m.cafe.daum.net/oraclesqltuning/8ACn/28

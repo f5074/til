@@ -237,20 +237,54 @@ DELETE /restaurants/{id}
 실제 구현
 
 #### 8. 가게상세 -1
+실제 구현
+
+중복
+Respository
 
 
 #### 9. 가게상세 -2
+실제 구현
 
 
 #### 10. 의존성 주입
 
+Dependency Injection
+
+의존성 주입
+
+의존관계
+
+A는 B에 의존 = A가 B를 사용 
+-> B의 변화가 A에 영향 => 관리 필요
+
+Controller는 Repository에 의존
+
+Controller에 Repository를 사용
+
+Spring IOC Container의 역할
+@Component
+@Autowired
+
+extract interface
+
+#### 11. 레이어 분리-1
+
+Layered Architechture
+
+UI Layer
+Application Layer
+Domain Layer
 
 
+interfaces
+application
+domain
 
 
+Menu, Item을 추가
 
+복잡한 로직 -> Application Layer 도입 -> Restaurant Service
 
-
-
-
+실습
 
