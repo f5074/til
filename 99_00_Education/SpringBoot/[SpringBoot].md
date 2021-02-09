@@ -307,7 +307,20 @@ POJO
 
 #### 14. 가게 추가-1
 
+Header Location
 
+Empty {}
+Httpie 설치
+
+UI Layer = Controller
+Application Layer = Service
+
+
+http GET localhost:8080
+http POST localhost:8080/restaurants name=BeRyong address=Busan
+http GET localhost:8080/restaurants
+
+Controller
 
 #### 15. 가게 추가-2
 
