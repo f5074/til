@@ -130,7 +130,27 @@ SELECT TO_CHAR(SYSDATE, 'YYYY-MM-DD')
   FROM DUAL
 
 
+## ORA-01000최대 열기 커서 수를 초과했습니다.
+
+> 위와같은 에러발생 시 사용하는 트랜잭션 테이블에 Lock가 걸릴 확률이 높음
+
+SELECT SID
+	, USER_NAME
+	, COUNT(SID) CURSOR
+FROM V$OPEN_CURSOR
+WHERE 1 = 1
+--  AND user_name = 'SCOTT'
+GROUP BY SID
+	, USER_NAME
+ORDER BY CURSOR DESC
+
+
+
 ## Reference
 https://m.cafe.daum.net/oraclesqltuning/8ACn/28
 https://lawmin.tistory.com/58
+
+ORA-01000최대 열기 커서 수를 초과했습니다.
+https://serendipity.tistory.com/65
+
 
