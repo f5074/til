@@ -534,3 +534,18 @@ CREATE TABLE [dbo].[Employee](
        [EmployeeManagerEmail] [nvarchar](200) NULL
 ) ON [PRIMARY]
 GO
+
+
+### C# ref
+
+https://www.geeksforgeeks.org/ref-in-c-sharp/
+
+
+### C# Mybatis.NET 
+사용하는 노하우
+https://dever.tistory.com/237
+
+
+### C# Hashtable vs Dictionary<String,Object>
+
+https://dever.tistory.com/category/Visual%20Studio/C%23
