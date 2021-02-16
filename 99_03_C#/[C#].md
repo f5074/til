@@ -549,3 +549,26 @@ https://dever.tistory.com/237
 ### C# Hashtable vs Dictionary<String,Object>
 
 https://dever.tistory.com/category/Visual%20Studio/C%23
+
+
+
+### C# 도구상자(ToolBox)에 Control 추가 2021.02.17. 
+
+1. 도구상자에 컨텍스트 메뉴에서 '항목선택' 클릭
+2. 도구상자 항목 선택에서 '찾아보기' 클릭
+3. 해당 dll을 선택 시, 항목이 나타남
+(나타나는 항목은 UserControl, Control을 상속받은 Control, Component를 상속받은 구성요소, ToolBoxItem을 true로 준 Control)
+
+
+도구상자에 Control이 나타나지 않을 경우 해당 Control 상단에 [ToolboxItem(true]를 적용
+
+amespace F5074.DevExpressWinforms.MyUserControl
+{
+    [ToolboxItem(true]
+    public partial class MySearchLookUpEdit : SearchLookUpEdit
+    {
+        public MySearchLookUpEdit()
+        {
+        }
+    }
+}

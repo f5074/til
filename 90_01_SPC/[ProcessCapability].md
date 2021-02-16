@@ -11,8 +11,12 @@
 4. 공정 능력
 -> 수입 검사, 공정 검사, 최종 검사 등 업무에 적용
 
+관리도
+
+
 
 ## References
+https://slidesplayer.org/slide/15042981/
 
 https://m.blog.naver.com/PostView.nhn?blogId=kqm45&logNo=220975745063&proxyReferer=https:%2F%2Fwww.google.com%2F
 
