@@ -572,3 +572,11 @@ amespace F5074.DevExpressWinforms.MyUserControl
         }
     }
 }
+
+
+## C# runtime add property to class 2021.03.08.
+https://stackoverflow.com/questions/14724822/how-can-i-add-properties-to-a-class-on-runtime-in-c
+https://docs.microsoft.com/en-us/dotnet/api/system.reflection.emit.typebuilder.defineproperty?redirectedfrom=MSDN&view=net-5.0#System_Reflection_Emit_TypeBuilder_DefineProperty_System_String_System_Reflection_PropertyAttributes_System_Type_System_Type___
+
+## C# list to datatable 2021.03.08.
+https://stackoverflow.com/questions/564366/convert-generic-list-enumerable-to-datatable
