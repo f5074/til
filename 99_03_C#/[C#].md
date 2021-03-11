@@ -580,3 +580,21 @@ https://docs.microsoft.com/en-us/dotnet/api/system.reflection.emit.typebuilder.d
 
 ## C# list to datatable 2021.03.08.
 https://stackoverflow.com/questions/564366/convert-generic-list-enumerable-to-datatable
+
+
+
+### C# dynamic object add property 2021.03.10.
+https://stackoverflow.com/questions/3934161/adding-members-to-a-dynamic-object-at-runtime/12268797
+https://docs.microsoft.com/ko-kr/dotnet/csharp/programming-guide/types/walkthrough-creating-and-using-dynamic-objects
+https://stackoverflow.com/questions/14663763/how-to-add-an-attribute-to-a-property-at-runtime
+
+### C# runtime add datamember 2021.03.11.
+https://stackoverflow.com/questions/8391824/adding-dynamic-datamembers-to-datacontract
+https://stackoverflow.com/questions/23713965/configuring-wcf-data-contract-for-proper-json-response/23730772#23730772
+https://stackoverflow.com/questions/4836683/when-to-use-datacontract-and-datamember-attributes/4836803
+
+
+
+
+
+
