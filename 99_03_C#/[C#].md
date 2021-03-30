@@ -601,5 +601,53 @@ https://stackoverflow.com/questions/14663763/how-to-add-an-attribute-to-a-proper
 https://jacking75.github.io/csharp_UnitTest/
 
 
+### C# 클래스의 프로퍼티 List 가져오기 및 해당 프로퍼티 값 설정, 가져오기 (Get Property LIsts, Get Method Lists)
+
+https://shunmania.com/295
 
 
+### WebServiceHost 2021.03.18.
+static void Main(string[] args)
+{
+    WebServiceHost host = new WebServiceHost(typeof(DeployService), new Uri("http://localhost:8000/"));
+    try
+    {
+        ServiceEndpoint ep = host.AddServiceEndpoint(typeof(IDeployService), new WebHttpBinding(), "");
+        host.Open();
+        using (ChannelFactory<IDeployService> cf = new ChannelFactory<IDeployService>(new WebHttpBinding(), "http://localhost:8000"))
+        {
+            cf.Endpoint.Behaviors.Add(new WebHttpBehavior());
+
+            IDeployService channel = cf.CreateChannel();
+
+        }
+
+        Console.WriteLine("Press <ENTER> to terminate");
+        Console.ReadLine();
+
+        host.Close();
+    }
+    catch (CommunicationException cex)
+    {
+        Console.WriteLine("An exception occurred: {0}", cex.Message);
+        host.Abort();
+    }
+}
+
+
+### C# Form Lacalizable
+
+Form의 Localizable 속성을 True로 변경시 Form.resx에 다국어가 필요한 언어를 입력할 수 있도록 화면에 해당하는 text가 등록됨
+
+
+### C# WCF Binding관련 2021.03.30. 
+
+ServiceHost에 nettcpBinding,  WebServiceHost에 WebHttpBinding 적절한 Binding 설정
+
+ChannelFactory<T> factory = new ChannelFactory<T>();
+factory.Endpoint.Address = new EndpointAddress(address);
+WebHttpBinding binding = new WebHttpBinding(){ MaxBufferPoolSize = Int32.MaxValue, MaxBufferSize = Int32.MaxValue, MaxReceivedMessageSize = Int32.MaxValue };
+factory.Endpoint.Binding = binding;
+// WebHttpBinding Endpoint Behaviors
+factory.Endpoint.Behaviors.Add(new WebHttpBehavior());
+factory.Endpoint.Contract.ContractType = typeof(T);
