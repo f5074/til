@@ -651,3 +651,44 @@ factory.Endpoint.Binding = binding;
 // WebHttpBinding Endpoint Behaviors
 factory.Endpoint.Behaviors.Add(new WebHttpBehavior());
 factory.Endpoint.Contract.ContractType = typeof(T);
+
+
+### C# T4 Template
+
+
+https://m.blog.naver.com/PostView.nhn?blogId=xyz37&logNo=50080758940&proxyReferer=https:%2F%2Fwww.google.com%2F
+
+<#= "using System;" #>
+<#= "using System.Collections.Generic;" #>
+<#= "using System.Linq;" #>
+<#= "using System.Text;" #>
+
+<#= "namespace T4TemplateTest01" #>
+<#= "{" #>
+<#= " class Program" #>
+<#= " {" #>
+<#= "  static void Main(string[] args)" #>
+<#= "  {" #>
+<#= "  test" #>
+<#= "  }" #>
+<#= " }" #>
+<#= "}" #>
+
+
+https://soowankim.github.io/2019-02-20/TextTemplateTransformationToolkit/
+
+<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ output extension=".cs" #>
+<# var properties = new string [] {"P1", "P2", "P3"}; #>
+// This is generated code:
+class MyGeneratedClass {
+<# // This code runs in the text template:
+  foreach (string propertyName in properties)  { #>
+  // Generated code:
+  private int <#= propertyName #> = 0;
+<# } #>
+}
+
+
+
+
