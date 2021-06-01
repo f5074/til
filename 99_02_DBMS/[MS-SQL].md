@@ -39,5 +39,7 @@ http://idenrai.tistory.com/73
 
 
 
+## 확인 DB Link
+SELECT * FROM master.dbo.sysservers 
 
 
