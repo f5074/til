@@ -240,6 +240,43 @@ where 1 = 1
 --  - 상품번호가 11~20에 해당하면 between11_20  
 --  - 상품번호가 21~30에 해당하면 between21_30 
 --  - 상품번호가 31~40에 해당하면 between31_40
+with between1_10 as (
+select count(o.ordernumber) as cnt, 'between1_10' as type
+ from orders o
+ inner join order_details od on od.ordernumber = o.ordernumber
+ inner join products p on p.productnumber = od.productnumber
+where p.productnumber between 1 and 10
+), between11_20 as (
+select count(o.ordernumber) as cnt, 'between11_20' as type
+  from orders o
+ inner join order_details od on od.ordernumber = o.ordernumber
+ inner join products p on p.productnumber = od.productnumber
+where p.productnumber between 11 and 20
+), between21_30 as (
+select count(o.ordernumber) as cnt, 'between21_30' as type
+  from orders o
+ inner join order_details od on od.ordernumber = o.ordernumber
+ inner join products p on p.productnumber = od.productnumber
+where p.productnumber between 21 and 30
+), between31_40 as (
+select count(o.ordernumber) as cnt, 'between31_40' as type
+  from orders o
+ inner join order_details od on od.ordernumber = o.ordernumber
+ inner join products p on p.productnumber = od.productnumber
+where p.productnumber between 31 and 40
+)
+select *
+ from between1_10
+ union all
+select *
+ from between11_20
+ union all
+select *
+ from between21_30
+ union all
+select *
+ from between31_40
+
 
 
 -- 문제5번) 타이어(Tires)  카테고리에 해당하는 2017/09/01 ~ 2017/09/10일에 주문 중, 주문 일자별 타이어 카테고리별 주문 수를 확인하고. 추가로 타이어 카테고리가 이전 주문일자의 주문 수를 노출하고, 이전 주문일자와 현 주문일자를 비교해주세요.  (with 절 활용)
@@ -247,3 +284,30 @@ where 1 = 1
 --  - 이전 주문일자보다 주문 수가 늘었다면 plus 
 --  - 이전 주문일자와 주문 수가 동일하다면 same 
 --  - 이전 주문일자보다 주문 수가 줄었다면 minus
+with cur_date as (
+	select o.orderdate, c.categorydescription, count(o.ordernumber) as cnt
+	  from orders o
+	 inner join order_details od on od.ordernumber = o.ordernumber
+	 inner join products p on p.productnumber = od.productnumber
+	 inner join categories c on c.categoryid = p.categoryid
+	where c.categorydescription = 'Tires'
+	  and o.orderdate between '2017-09-01' and '2017-09-10'
+	group by grouping sets ((o.orderdate, c.categorydescription))
+	order by o.orderdate
+), pre_date as (
+	select o.orderdate, lag(o.orderdate, 1) over() as pre_date,  lag(count(o.ordernumber), 1) over () as prev_cnt
+	  from orders o
+	 inner join order_details od on od.ordernumber = o.ordernumber
+	 inner join products p on p.productnumber = od.productnumber
+	 inner join categories c on c.categoryid = p.categoryid
+	where c.categorydescription = 'Tires'
+	  and o.orderdate between '2017-09-01' and '2017-09-10'
+	group by grouping sets ((o.orderdate, c.categorydescription))
+	order by o.orderdate
+)
+select cd.orderdate, cd.cnt, pd.pre_date, pd.prev_cnt
+,case when cd.cnt > pd.prev_cnt then 'plus' 
+when cd.cnt = pd.prev_cnt then 'same'
+when cd.cnt < pd.prev_cnt then 'minus' end as type
+  from cur_date cd
+ inner join pre_date pd on pd.orderdate =   cd.orderdate
